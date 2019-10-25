@@ -46,9 +46,9 @@ void printMatrix(double** matrix,int numCol,int numRow);
     ncols = nrows;
     if (myid == 0) {
       // Master Code goes here
-      aa = gen_matrix(nrows, ncols);
-      bb = gen_matrix(ncols, nrows);
-      cc1 = malloc(sizeof(double) * nrows * nrows);
+      //aa = gen_matrix(nrows, ncols);
+      //bb = gen_matrix(ncols, nrows);
+      //cc1 = malloc(sizeof(double) * nrows * nrows);
 
         //Import matrix a dimensions
         if ((fp1 = fopen(argv[ 1 ], "r")) == NULL) {
