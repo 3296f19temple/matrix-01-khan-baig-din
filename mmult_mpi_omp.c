@@ -8,8 +8,6 @@
 double* gen_matrix(int n, int m);
 int mmult(double *c, double *a, int aRows, int aCols, double *b, int bRows, int bCols);
 void compare_matrix(double *a, double *b, int nRows, int nCols);
-int get_rows(char *filename);
-int get_cols(char *filename);
 
 /** 
     Program to multiply a matrix times a matrix using both
@@ -29,15 +27,19 @@ int main(int argc, char* argv[])
   MPI_Status status;
   
   int m1rows, m1cols, m2rows, m2cols;
+  int getRowsAndColumns;
   
   MPI_Init(&argc, &argv);
   MPI_Comm_size(MPI_COMM_WORLD, &numprocs);
   MPI_Comm_rank(MPI_COMM_WORLD, &myid);
     
-  m1rows = get_rows(argv[1]);
-  m1cols = get_cols(argv[1]);
-  m2rows = get_rows(argv[2]);
-  m2cols = get_cols(argv[2]);
+  FILE *fp1
+  FILE *fp2;
+  fp1 = fopen(argv[1], "r");
+  fp2 = fopen(argv[2], "r");
+  
+  getRowsAndColumns = fscanf(fp1, "rows(%d) cols(%d)", &m1rows, &m1cols);
+  getRowsAndColumns = fscanf(fp2, "rows(%d) cols(%d)", &m2rows, &m2cols);
     
   if(m1cols != m2rows){
       printf("Incompatible matrices\n");
@@ -66,40 +68,4 @@ int main(int argc, char* argv[])
   }
   MPI_Finalize();
   return 0;
-}
-
-int get_rows(char *filename){
-    FILE *fp = fopen(filename, "r");
-    int ch = 0;
-    int rows = 1;
-
-    if (fp == NULL){
-        return 0;
-    }
-    while(!feof(fp)){
-        ch = fgetc(fp);
-        if(ch == '\n'){
-            rows++;
-        }
-    }
-    fclose(fp);
-    return rows;
-}
-
-int get_cols(char *filename){
-    FILE *fp = fopen(filename,"r");
-    char buffer[100];
-    int columns = 1;
-
-    if(fp == NULL){
-        return 0;
-    }
-    char *line = fgets(buffer, 100, fp);
-    for(int i=0; buffer[i]; i++){
-        if(buffer[i] == ' '){
-            columns++;
-        }
-    }
-    fclose(fp);
-    return columns;
 }
