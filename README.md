@@ -1,3 +1,7 @@
+Task 2 - Non parallelized matrix multiplication - Fayaz
+The first algorithm to implement is the non-parallelized matrix multiplication algorithm. With this I first initiated the matrix that will will be the one to possess the output with zeros. Then wrote two for loops to multiply the two input matrices and stored the value in the zero initialized matrix.
+
+
 #Assignment#
 
 Multiplication of two matrices has to be implemented as
