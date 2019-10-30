@@ -18,12 +18,14 @@ OpenMP
 The OpenMP implementation is just the program with the omp pragma over the first for-loop. This progma can only be used in the outer loop.
 There are independent implementation. Performance increases by a lot compared to the program without parrelization. 
 
-'#pragma omp for  
+```
+#pragma omp for  
                 for (int k=0; k<ncols; k++){
                     for (int i=0; i<rows; i++){
                         cc1[i][k] = 0.0; 
                         for(int j=0; j<brows; j++){
-                            cc1[i][k] += aa[i][j] * bb[j][k];'
+                            cc1[i][k] += aa[i][j] * bb[j][k];
+```
 
 
 MPI
