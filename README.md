@@ -1,6 +1,10 @@
 ## 1. Distributed parallel computing
 Task 2 - Non parallelized matrix multiplication - Fayaz
+
 The first algorithm to implement is the non-parallelized matrix multiplication algorithm. With this I first initiated the matrix that will will be the one to possess the output with zeros. Then wrote two for loops to multiply the two input matrices and stored the value in the zero initialized matrix.
+
+## 2. SIMD
+Single Instruction Multiple Data is described by its own name. The implementation of the algorithm involved getting multiple parts of the matrices and then doing the multiplication and adding at once, instead of multiplying adding and storing for just one spot in the matrix. In this instance, the columns of matrix C is vectorized and its information is stored. The first for loop zero initializes the column, then stores the number in that column then moves to the next one. 
 
 ### Assignment
 
