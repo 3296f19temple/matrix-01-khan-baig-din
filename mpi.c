@@ -109,7 +109,6 @@ int main(int argc, char* argv[])
                 }
             }
             endtime = MPI_Wtime();
-            printf("Time: %f\n",(endtime - starttime));
 
             cc2  = malloc(sizeof(double) * m2rows * m2cols);
             mmult(cc2, aa, m1rows, m1cols, bb, m2cols, m2rows);
@@ -137,7 +136,8 @@ int main(int argc, char* argv[])
 
             fclose(fp1);
             fclose(fp2);
-
+            
+            printf("Time: %f\n",(endtime - starttime));
         }
         else
         {
