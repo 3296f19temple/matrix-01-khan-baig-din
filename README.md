@@ -46,11 +46,11 @@ and then
 mpicc -o mpi -fopenmp -O3 mmult.o mpi.o
 ```
 
-Run the MPI algorithm with two input matrix text files with the following example command.
+Run the MPI multiplication with two input matrix text files with the following example command.
 ```
 mpiexec -f ~/hosts -n x input1.txt input2.txt
 ```
-where x is the number of processes that the algorithm uses and input1.txt is the first matrix and input2.txt is the second matrix.
+where x is the number of processes that the program uses and input1.txt is the first matrix and input2.txt is the second matrix.
 
 ## 2. Team work
 The team team consisted of 3 members, Dawud, Saad, and Fayaz. Each member was assigned about 2 tasks to complete for this project. Dawud's tasks are to "Automate running  matrix multiplication on different size matrix and generating data in tabular format for graph production." and "Matrix multiplication in C  on Wolfgand cluster with  OpenMP (easy, try mmult_omp_timing)". Saad's tasks are to implement "Matrix multiplication in C  on Wolfgand cluster with MPI (Distribitued Memory)" and "Produce graphs". The remaining 3 task, the two that are chosen from the list of four and the last task is to be worked on together. The master branch was locked and so when any new changes were committed and pushed onto private branch and then pull requested to the master branch, two reviews were required to ensure that the code was thoroughly checked and approved. 
