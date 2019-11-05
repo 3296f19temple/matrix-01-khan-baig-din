@@ -48,7 +48,7 @@ mpicc -o mpi -fopenmp -O3 mmult.o mpi.o
 
 Run the MPI multiplication with two input matrix text files with the following example command.
 ```
-mpiexec -f ~/hosts -n x input1.txt input2.txt
+mpiexec -f ~/hosts -n x ./mpi input1.txt input2.txt
 ```
 where x is the number of processes that the program uses and input1.txt is the first matrix and input2.txt is the second matrix.
 
