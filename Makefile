@@ -31,6 +31,12 @@ pi:	pi.c
 
 mxv_omp_mpi:	mxv_omp_mpi.c
 	mpicc -fopenmp -O3 -o mxv_omp_mpi mxv_omp_mpi.c
+	
+mpi:	mmult.o mpi.o
+	mpicc -o mpi -fopenmp -O3 mmult.o mpi.o
+
+mpi.o:	mpi.c
+	mpicc -c -fopenmp -O3 mpi.c
 
 clean:
 	rm -f *.o
