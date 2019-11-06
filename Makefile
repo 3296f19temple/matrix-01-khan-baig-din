@@ -2,6 +2,12 @@ PGMS=mmult_omp_timing matrix_times_vector hello pi mxv_omp_mpi mmult_mpi_omp
 
 all:	${PGMS}
 
+mpi:	mmult.o mpi.o
+	mpicc -o mpi -fopenmp -O3 mmult.o mpi.o
+
+mpi.o:	mpi.c
+	mpicc -c -fopenmp -O3 mpi.c
+
 mmult_mpi_omp:		mmult.o mmult_mpi_omp.o
 	mpicc -o mmult_mpi_omp -fopenmp -O3 mmult.o mmult_mpi_omp.o
 
@@ -31,7 +37,7 @@ pi:	pi.c
 
 mxv_omp_mpi:	mxv_omp_mpi.c
 	mpicc -fopenmp -O3 -o mxv_omp_mpi mxv_omp_mpi.c
-
+	
 clean:
 	rm -f *.o
 	rm -f ${PGMS}

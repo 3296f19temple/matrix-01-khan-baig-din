@@ -3,7 +3,7 @@ Task 2 - Non parallelized matrix multiplication - Fayaz
 
 The first algorithm to implement is the non-parallelized matrix multiplication algorithm. With this I first initiated the matrix that will will be the one to possess the output with zeros. Then wrote two for loops to multiply the two input matrices and stored the value in the zero initialized matrix.
 
-## 2. SIMD
+2. SIMD
 Single Instruction Multiple Data is described by its own name. The implementation of the algorithm involved getting multiple parts of the matrices and then doing the multiplication and adding at once, instead of multiplying adding and storing for just one spot in the matrix. In this instance, the columns of matrix C is vectorized and its information is stored. The first for loop zero initializes the column, then stores the number in that column then moves to the next one. 
 
 ### Assignment
@@ -32,9 +32,25 @@ There are independent implementation. Performance increases by a lot compared to
 ```
 
 
-MPI
+### MPI
 
 Receive two input matrices from files entered as command line arguments.  Check matrices for compatibility and if they're not compatible, end the program and if they are compatible, go through with the rest of the execution. Generate two matrices from the two matrices from the file and send one matrix to the slaves and send rows of the other matrix to processes.  Master listens to receive info from the slaves and the processes and an A x B matrix is calculated using the data received. The result matrix is printed to the screen and is also put into an output text file. 
+
+To compile the mpi.c file, execute the following commands in case Makefile does not compile it properly.
+
+```
+mpicc -c -fopenmp -O3 mpi.c
+```
+and then
+```
+mpicc -o mpi -fopenmp -O3 mmult.o mpi.o
+```
+
+Run the MPI multiplication with two input matrix text files with the following example command.
+```
+mpiexec -f ~/hosts -n x ./mpi input1.txt input2.txt
+```
+where x is the number of processes that the program uses and input1.txt is the first matrix and input2.txt is the second matrix.
 
 ## 2. Team work
 The team team consisted of 3 members, Dawud, Saad, and Fayaz. Each member was assigned about 2 tasks to complete for this project. Dawud's tasks are to "Automate running  matrix multiplication on different size matrix and generating data in tabular format for graph production." and "Matrix multiplication in C  on Wolfgand cluster with  OpenMP (easy, try mmult_omp_timing)". Saad's tasks are to implement "Matrix multiplication in C  on Wolfgand cluster with MPI (Distribitued Memory)" and "Produce graphs". The remaining 3 task, the two that are chosen from the list of four and the last task is to be worked on together. The master branch was locked and so when any new changes were committed and pushed onto private branch and then pull requested to the master branch, two reviews were required to ensure that the code was thoroughly checked and approved. 
