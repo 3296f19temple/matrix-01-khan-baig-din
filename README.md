@@ -59,3 +59,18 @@ The team team consisted of 3 members, Dawud, Saad, and Fayaz. Each member was as
 The Trello project board was used for this lab because of its ease of access and helpful attributes. It helps in notifying everyone where the project currently is and what needs to be done further in order to succeed in finishing on time. All the tasks are given its own card and has the name of the person who is assigned the task on it. Four states were assigned to each task as it progressed through the project, "To do", "Doing", "Review Needed", "Done". This helps in staying organized and making sure the project progresses smoothly. 
 
 Adapting to the C environment after doing the last few labs in Java was a difficult task. The team members needed to review old material from Operating Systems class and also adjust to the new information that was given. Also, the tasks were somewhat confusing because it was something that we never encountered in previous classes. Managing the project was something that required a great deal of multitasking because so many moving parts were involved. First off the team had to be coordinated in order to make sure that GitHub did not encounter any problems. This meant that we could not necessarily work on the project all at the same time. There was also the issue of SSH(ing), sometimes the connection wouldn't connect for some odd reason. Lastly, after using Netbeans to commit, push, and pull, it  required effort to get used to linux commands to do those tasks. Also, the Putty environment was something that needed some work relearning. It is not as easy as NetBeans, neither are there errors shown while typing in real time, nor is there a scrolling mechanism to speed up the process of coding.
+
+## 4. Graphs
+
+Below are the graphs for the speed of matrix multiplication using MPI on the Wolfgang Cluster.
+![Use Case Image](mpi_graph1.JPG)
+![Use Case Image](mpi_graph2.JPG)
+
+Overall, the time for matrix multiplication using MPI is quicker for larger matrices than the time for other algorithms (SIMD and OpenMP). However, MPI is significantly slower for the smaller matrix sizes from around 2x2 to 25x25 since there is some overhead involved with the broadcasting, sending matrices and rows to processes and workers, etc. that is conducted during MPI. This is shown in the odd fluctuation that is also somehow linear between square matrix sizes 2 to 25. MPI's speeds increase greatly in the larger matrix sizes from 100 to 1,000. MPI speeds also vary greatly depending on the number of processes you use, as in which number you put for "x" in
+```
+mpiexec -f ~/hosts -n x ./mpi input1.txt input2.txt
+```
+Experiments with using 2 as "x" showed speeds considerably slower than using 4 as "x", so I went with 4 since that seemed to be most consistent when looking at all the matrix sizes I used. In conclusion, MPI is slower for smaller matrices than other algorithms because there is overhead involved but MPI gets faster than other algorithms as the matrix sizes get larger since the methods involved in MPI ensure efficient multiplication at these large sizes.
+
+Below is the graph which was automated using Gnuplot.
+![Use Case Image](out.png)
